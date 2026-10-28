@@ -1,0 +1,26 @@
+name: Build Kernel
+
+on:
+  workflow_dispatch:   # यह "Run workflow" बटन को सक्षम करता है
+
+jobs:
+  build-kernel:
+    name: Build Kernel
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Build
+        uses: dabao1955/kernel_build_action@main
+        with:
+          # --- आपकी कर्नेल रिपॉज़िटरी की जानकारी ---
+          kernel-url: https://github.com/camellia-devs/kernel_xiaomi_mt6833
+          kernel-branch: main          # <-- अपनी ब्रांच का नाम यहाँ डालें (जैसे main, master, 13.0)
+          config: camellia_defconfig   # <-- आपके डिवाइस का defconfig (यह सही है)
+          
+          # --- आर्किटेक्चर और टूलचेन ---
+          arch: arm64
+          android-version: 12          # <-- अपने डिवाइस का Android वर्ज़न डालें
+          aosp-clang-version: r383902  # 4.14 कर्नेल के लिए उपयुक्त Clang वर्ज़न[reference:1]
+          
+          # --- फ़िलहाल के लिए बेसिक बिल्ड (सिर्फ़ कंपाइल टेस्ट) ---
+          # SUSFS, KPM, NoMount जैसे फ़ीचर्स बाद में अलग से जोड़े जाएंगे
+          ksu: false                   # पहले बेसिक बिल्ड सफल करें, फिर इसे true करें
