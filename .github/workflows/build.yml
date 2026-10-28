@@ -13,7 +13,7 @@ jobs:
         with:
           # --- आपकी कर्नेल रिपॉज़िटरी की जानकारी ---
           kernel-url: https://github.com/camellia-devs/kernel_xiaomi_mt6833
-          kernel-branch: main          # <-- अपनी ब्रांच का नाम यहाँ डालें (जैसे main, master, 13.0)
+          kernel-branch: flyme          # <-- अपनी ब्रांच का नाम यहाँ डालें (जैसे main, master, 13.0)
           config: camellia_defconfig   # <-- आपके डिवाइस का defconfig (यह सही है)
           
           # --- आर्किटेक्चर और टूलचेन ---
