@@ -1,3 +1,5 @@
+KSU_VERSION_OVERRIDE := 30420
+KSU_VERSION_TAG_OVERRIDE := v3.4.2
 kernelsu-objs := core/init.o
 
 kernelsu-objs += compat/kernel_compat.o
