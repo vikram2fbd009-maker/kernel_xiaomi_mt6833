@@ -10,16 +10,18 @@
 
 #include "uapi/supercall.h"
 
-/* KSU_LOOKUP_SYMBOLS_COMPAT_SHIM: v1.x compat (v3.4.2 manager never sends this cmd) */
+/* KSU_LOOKUP_SYMBOLS_COMPAT_SHIM v3: names+addrs are user-space pointers */
 #ifndef KSU_LOOKUP_SYMBOLS_MAX
 #define KSU_LOOKUP_SYMBOLS_MAX 8
-#define KSU_SYMBOL_NAME_LEN 32
 struct ksu_lookup_symbols_cmd {
+    __u32 flags;
     __u32 count;
-    __u64 symbols[KSU_LOOKUP_SYMBOLS_MAX];
-    char names[KSU_LOOKUP_SYMBOLS_MAX][KSU_SYMBOL_NAME_LEN];
+    __u64 addrs;   /* __user __u64[] input */
+    __u64 names;   /* __user __u64[] output */
 } __attribute__((packed));
 #endif
+
+
 #include "supercall/internal.h"
 #include "arch.h" // IWYU pragma: keep
 #include "policy/allowlist.h"
