@@ -104,6 +104,7 @@ int vfs_statfs(const struct path *path, struct kstatfs *buf)
 
 #ifdef CONFIG_ZEROMOUNT
         /* ZeroMount: Spoof statfs for injected files */
+        struct inode *inode = path->dentry->d_inode;
         if (zeromount_is_injected_file(inode)) {
                 zeromount_spoof_statfs(path, buf);
                 return 0;
