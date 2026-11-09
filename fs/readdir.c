@@ -17,6 +17,7 @@
 #include <linux/stat.h>
 #include <linux/file.h>
 #include <linux/fs.h>
+extern bool zeromount_is_injected_file(struct inode *inode);
 #include <linux/fsnotify.h>
 #include <linux/dirent.h>
 #include <linux/security.h>
