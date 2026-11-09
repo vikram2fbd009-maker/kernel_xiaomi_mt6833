@@ -387,3 +387,4 @@ ccflags-y += -Wno-strict-prototypes -Wno-int-conversion -Wno-gcc-compat -Wno-mis
 ccflags-y += -Wno-declaration-after-statement -Wno-unused-function -Wno-unused-variable
 
 # Keep a new line here!! Because someone may append config
+ccflags-y += -I$(srctree)/drivers/kernelsu
