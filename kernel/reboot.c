@@ -67,6 +67,11 @@ EXPORT_SYMBOL_GPL(emergency_restart);
 
 void kernel_restart_prepare(char *cmd)
 {
+#ifdef CONFIG_KSU_SUSFS
+    extern void susfs_reboot_cleanup(void);
+    susfs_reboot_cleanup();
+#endif
+
 	blocking_notifier_call_chain(&reboot_notifier_list, SYS_RESTART, cmd);
 	system_state = SYSTEM_RESTART;
 	usermodehelper_disable();
